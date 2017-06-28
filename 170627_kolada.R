@@ -55,3 +55,4 @@ datawide <- spread(data, kpi, value)
 kpinames <- left_join(data.frame(kpi = colnames(datawide), stringsAsFactors = F),data.frame(kpi = kpis$kpi.id, kpi.title = kpis$kpi.title, stringsAsFactors = F), by = "kpi")
 kpinames$kpi.title[1:2] <- c("ou","year")
 colnames(datawide) <- kpinames$kpi.title
+datawide <- left_join(datawide,ouinfo,by = "ou")
