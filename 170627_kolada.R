@@ -7,7 +7,7 @@ db <- rkolada::rkolada()
 
 # df of relevant KPIs w/ metadata (using rkolada)
 
-kpis <- db$kpi()[kpi.has_ou_data == TRUE & kpi.operating_area == "Särskilt boende"]
+kpis <- db$kpi()[kpi.has_ou_data == TRUE & kpi.operating_area == "SÃ¤rskilt boende"]
 
 # vector of relevant kpi ids
 
@@ -55,4 +55,3 @@ datawide <- spread(data, kpi, value)
 kpinames <- left_join(data.frame(kpi = colnames(datawide), stringsAsFactors = F),data.frame(kpi = kpis$kpi.id, kpi.title = kpis$kpi.title, stringsAsFactors = F), by = "kpi")
 kpinames$kpi.title[1:2] <- c("ou","year")
 colnames(datawide) <- kpinames$kpi.title
-datawide <- left_join(datawide,ouinfo,by = "ou")
